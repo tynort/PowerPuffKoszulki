@@ -1,78 +1,70 @@
 ﻿using System;
+using System.IO;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.IO;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Threading;
+using System.Security.Permissions;
 
 namespace Powerpuff1
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    class Watcher
     {
-        string wieka = "";
+        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        public static void MonitorDirectory(string path)
 
-
-        public MainWindow()
         {
+            FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
+
+            fileSystemWatcher.Path = path;
+
+            fileSystemWatcher.Created += FileSystemWatcher_Created;
+
+            fileSystemWatcher.Renamed += FileSystemWatcher_Renamed;
+
+            fileSystemWatcher.Deleted += FileSystemWatcher_Deleted;
+
+            fileSystemWatcher.EnableRaisingEvents = true;
+
+            fileSystemWatcher.Filter = "*.png";
+
+            Console.WriteLine(path + @"\static.png");
+
+            if (File.Exists(path + @"\static.png"))
             {
-                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                string UserName1 = Environment.UserName;
-                string path_directory = @"C:\temp";
-                Watcher.MonitorDirectory(path_directory);
+                Move.ChangeName();
             }
+
+
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private static void FileSystemWatcher_Created(object sender, FileSystemEventArgs e)
+
         {
-            Move.GetSize(3);
-            //this.Visibility = Visibility.Collapsed;
+
+            Console.WriteLine("File created: {0}", e.Name);
+
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private static void FileSystemWatcher_Renamed(object sender, FileSystemEventArgs e)
+
         {
-            Move.GetSize(5);
-            //this.Visibility = Visibility.Collapsed;
+
+            Console.WriteLine("File renamed: {0}", e.Name);
+            Thread.Sleep(5000);
+            Move.ChangeName();
+
 
         }
-        private void button3_Click(object sender, RoutedEventArgs e)
+
+        private static void FileSystemWatcher_Deleted(object sender, FileSystemEventArgs e)
+
         {
-            Move.GetSize(7);
-            //this.Visibility = Visibility.Collapsed;
+
+            Console.WriteLine("File deleted: {0}", e.Name);
 
         }
-        private void button4_Click(object sender, RoutedEventArgs e)
-        {
-            Move.GetSize(9);
-            //this.Visibility = Visibility.Collapsed;
-
-        }
-        private void button5_Click(object sender, RoutedEventArgs e)
-        {
-            Move.GetSize(12);
-            //this.Visibility = Visibility.Collapsed;
-
-        }
-
-
-
-
-
-
 
     }
-
-
 }
