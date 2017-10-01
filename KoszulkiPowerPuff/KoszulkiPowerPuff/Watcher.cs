@@ -33,7 +33,6 @@ namespace Powerpuff1
 
             if (File.Exists(path + @"\static.png"))
             {
-                MainWindow.valueVisibleWindow = true;
                 Move.ChangeName();
             }
 
@@ -44,7 +43,9 @@ namespace Powerpuff1
 
         {
 
-            Console.WriteLine("File created: {0}", e.Name);
+            Console.WriteLine("Nowy plik: {0}", e.Name);
+            Thread.Sleep(5000);
+            Move.ChangeName();
 
         }
 
@@ -52,7 +53,8 @@ namespace Powerpuff1
 
         {
 
-            Console.WriteLine("File renamed: {0}", e.Name);
+            Console.WriteLine("Nowy plik - zmieniona nazwa: {0}", e.Name);
+            MainWindow.ShowWindow();
             Thread.Sleep(5000);
             Move.ChangeName();
 
@@ -63,7 +65,7 @@ namespace Powerpuff1
 
         {
 
-            Console.WriteLine("File deleted: {0}", e.Name);
+            Console.WriteLine("Plik skasowany: {0}", e.Name);
 
         }
 

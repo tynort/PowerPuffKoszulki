@@ -33,21 +33,21 @@ namespace Powerpuff1
 
 
                 File.Move(path, path2);
-                Console.WriteLine("{0} was moved to {1}.", path, path2);
+                Console.WriteLine("{0} został przeniesony do {1}.", path, path2);
 
                 // See if the original exists now.
                 if (File.Exists(path))
                 {
-                    Console.WriteLine("The original file still exists, which is unexpected.");
+                    Console.WriteLine("Orginalny plik nadal istnieje.");
                 }
                 else
                 {
-                    Console.WriteLine("The original file no longer exists, which is expected.");
+                    Console.WriteLine("Orginalny plik został skasowany.");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
+                Console.WriteLine("Coś nie pykło!");
             }
         }
         public static void GetSize(int v)

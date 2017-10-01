@@ -19,23 +19,16 @@ namespace Powerpuff1
 {
     public partial class MainWindow : Window
     {
-        public static bool valueVisibleWindow = false;
-
+        public static bool valueVisibleWindow;
         public MainWindow()
         {
             {
+                this.Visibility = Visibility.Hidden;
                 this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                if (valueVisibleWindow == true)
-                {
-                    this.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    this.Visibility = Visibility.Hidden;
-                }
                 string UserName1 = Environment.UserName;
                 string path_directory = @"C:\temp";
                 Watcher.MonitorDirectory(path_directory);
+
             }
         }
 
@@ -69,7 +62,16 @@ namespace Powerpuff1
             this.Visibility = Visibility.Hidden;
 
         }
-            
+        public static void ShowWindow()
+        {
+            //this.Visibility = Visibility.Visible;
+        }
+
+        public static void HideWindow()
+        {
+            //this.Visibility = Visibility.Hidden;
+        }
+
     }
 
 
