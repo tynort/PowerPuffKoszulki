@@ -17,18 +17,22 @@ using System.Threading;
 
 namespace Powerpuff1
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        string wieka = "";
-
+        public static bool valueVisibleWindow = false;
 
         public MainWindow()
         {
             {
                 this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                if (valueVisibleWindow == true)
+                {
+                    this.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    this.Visibility = Visibility.Hidden;
+                }
                 string UserName1 = Environment.UserName;
                 string path_directory = @"C:\temp";
                 Watcher.MonitorDirectory(path_directory);
@@ -38,40 +42,34 @@ namespace Powerpuff1
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             Move.GetSize(3);
-            //this.Visibility = Visibility.Collapsed;
+            this.Visibility = Visibility.Hidden;
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             Move.GetSize(5);
-            //this.Visibility = Visibility.Collapsed;
+            this.Visibility = Visibility.Hidden;
 
         }
         private void button3_Click(object sender, RoutedEventArgs e)
         {
             Move.GetSize(7);
-            //this.Visibility = Visibility.Collapsed;
+            this.Visibility = Visibility.Hidden;
 
         }
         private void button4_Click(object sender, RoutedEventArgs e)
         {
             Move.GetSize(9);
-            //this.Visibility = Visibility.Collapsed;
+            this.Visibility = Visibility.Hidden;
 
         }
         private void button5_Click(object sender, RoutedEventArgs e)
         {
             Move.GetSize(12);
-            //this.Visibility = Visibility.Collapsed;
+            this.Visibility = Visibility.Hidden;
 
         }
-
-
-
-
-
-
-
+            
     }
 
 

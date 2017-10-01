@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:Powerpuff1"
         mc:Ignorable="d"
         Title="Koszulka atomówki" Height="350" Width="525" ResizeMode="NoResize" Icon="./Resources/6.ico">
-    <Grid>
+    <Grid MinWidth="5">
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/6.ico" Stretch="Uniform"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="286*"/>
 

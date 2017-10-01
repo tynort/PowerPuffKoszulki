@@ -9,7 +9,7 @@ using System.Security.Permissions;
 
 namespace Powerpuff1
 {
-    class Watcher
+    class Watcher : MainWindow
     {
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public static void MonitorDirectory(string path)
@@ -33,6 +33,7 @@ namespace Powerpuff1
 
             if (File.Exists(path + @"\static.png"))
             {
+                MainWindow.valueVisibleWindow = true;
                 Move.ChangeName();
             }
 

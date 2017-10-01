@@ -53,7 +53,6 @@ namespace Powerpuff1
         public static void GetSize(int v)
         {
             rozmiar = v.ToString();
-
         }
     }
 }
