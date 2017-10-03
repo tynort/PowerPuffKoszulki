@@ -15,14 +15,14 @@ namespace Powerpuff1
         public static void ChangeName()
         {
 
-            string UserName1 = Environment.UserName;
+            string UserName = Environment.UserName;
             //FileInfo fInfo = new FileInfo(@"C:\Users\" + UserName1 + @"\Downloads\static.png");
             FileInfo fInfo = new FileInfo(@"C:\temp\static.png");
             string data_pliku = fInfo.CreationTimeUtc.ToString("HH_mm_ss");
             string czas_zapisu = fInfo.LastWriteTimeUtc.ToString("HH_mm_ss");
             //string path = "C:\\Users\\" + UserName1 + @"\Downloads\static.png";
             string path = @"C:\temp\static.png";
-            string path2 = @"C:\temp2\koszulka_" + rozmiar + "_" + data_pliku + "_" + czas_zapisu + "_" + UserName1 + ".png";
+            string path2 = @"C:\temp2\koszulka_" + rozmiar + "_" + data_pliku + "_" + czas_zapisu + "_" + UserName + ".png";
 
             try
             {
